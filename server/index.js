@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require('cors');
 const app = express();
 
 const userRoutes = require("./routes/User");
@@ -8,11 +9,14 @@ const courseRoutes = require("./routes/Course");
 const contactUsRoute = require("./routes/Contact");
 const database = require("./config/database");
 const cookieParser = require("cookie-parser");
-const cors = require("cors");
 const {cloudinaryConnect } = require("./config/cloudinary");
 const fileUpload = require("express-fileupload");
 const dotenv = require("dotenv");
 
+const corsOptions = {
+    credentials: true,
+    origin: ['http://localhost:3000', 'http://localhost:4000'] // Whitelist the domains you want to allow
+};
 dotenv.config();
 const PORT = process.env.PORT || 4000;
 
@@ -21,12 +25,7 @@ database.connect();
 //middlewares
 app.use(express.json());
 app.use(cookieParser());
-app.use(
-	cors({
-		origin:"http://localhost:3000",
-		credentials:true,
-	})
-)
+app.use(cors(corsOptions));
 
 app.use(
 	fileUpload({
