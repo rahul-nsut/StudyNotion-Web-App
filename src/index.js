@@ -22,7 +22,7 @@ root.render(
         <App />
         <Toaster/>
       </BrowserRouter>
-  </Provider>
+i added this
     
     
   </React.StrictMode>
