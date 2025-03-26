@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
+change this line.
 import App from "./App";
 This is a new line added automatically.
 This is a new line added automatically.
